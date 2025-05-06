@@ -9,6 +9,10 @@ pipeline {
 					unityProject {
 						// define unity project location relative to repository
 						LOCATION = ''
+						
+						// If given, automatically use these credentials to license a free Unity version.
+						UNITY_CREDENTIALS : 'Slothsoft-Unity',
+						EMAIL_CREDENTIALS : 'Slothsoft-Google',
 
 						// use auto-versioning based on tags+commits
 						AUTOVERSION = 'git'
