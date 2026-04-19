@@ -1,15 +1,19 @@
 pipeline {
 	agent {
-		label 'linux && docker'
+		label '(linux && docker) || (windows && unity)'
 	}
 
 	stages {
 		stage('Index workspace') {
 			steps {
 				script {
-					def unityConfig = readProperties file: 'unityProject.properties'
+					def unityConfig = readProperties file: '.project'
 
-					docker.image('faulo/compose-unity:latest').inside {
+					if (isUnix()) {
+						docker.image('faulo/compose-unity:latest').inside {
+							unityProject(unityConfig)
+						}
+					} else {
 						unityProject(unityConfig)
 					}
 				}
