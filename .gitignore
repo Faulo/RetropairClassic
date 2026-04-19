@@ -19,6 +19,7 @@ $RECYCLE.BIN/
 
 # == Jenkins ==
 !/.jenkins/
+!/*.properties
 
 # == Visual Studio ==
 !/.editor/
