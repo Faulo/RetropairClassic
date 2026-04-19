@@ -3,6 +3,11 @@ pipeline {
 		label '(linux && docker) || (windows && unity)'
 	}
 
+	options {
+		disableConcurrentBuilds()
+		disableResume()
+	}
+
 	stages {
 		stage('Read unityProject.properties') {
 			steps {
