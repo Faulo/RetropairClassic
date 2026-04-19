@@ -4,10 +4,10 @@ pipeline {
 	}
 
 	stages {
-		stage('Index workspace') {
+		stage('Read unityProject.properties') {
 			steps {
 				script {
-					def unityConfig = readProperties file: '.project'
+					def unityConfig = readProperties file: 'unityProject.properties'
 
 					if (isUnix()) {
 						docker.image('faulo/compose-unity:latest').inside {
